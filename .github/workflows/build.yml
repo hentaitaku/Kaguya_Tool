@@ -19,5 +19,5 @@ jobs:
       shell: cmd
     - uses: actions/upload-artifact@v4
       with:
-        name: VNTranslationTools
+        name: Params_Tool
         path: Build
