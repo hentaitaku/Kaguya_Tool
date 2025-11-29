@@ -39,7 +39,7 @@ namespace Params_Tool
 
         void Read(BinaryReader reader)
         {
-            var versions = new double[] { 5.7, 5.6, 5.5, 5.4, 5.3, 5.2, 5.1, 5.0, 4.0, 3.0, 2.0 };
+            var versions = new double[] { 5.8, 5.7, 5.6, 5.5, 5.4, 5.3, 5.2, 5.1, 5.0, 4.0, 3.0, 2.0 };
 
             Version = 1.0;
 
@@ -53,6 +53,8 @@ namespace Params_Tool
                 }
 
                 reader.BaseStream.Position = 0;
+
+                throw new Exception("Bad version number." + signature + "##" + reader.ReadBytes(signature.Length).SequenceEqual(signature));
 
                 if (reader.ReadBytes(signature.Length).SequenceEqual(signature))
                 {
