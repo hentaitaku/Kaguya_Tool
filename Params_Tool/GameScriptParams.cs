@@ -39,14 +39,16 @@ namespace Params_Tool
 
         void Read(BinaryReader reader)
         {
-            var versions = new double[] { 5.8, 5.7, 5.6, 5.5, 5.4, 5.3, 5.2, 5.1, 5.0, 4.0, 3.0, 2.0 };
+            var versions = new double[] { 5.7, 5.6, 5.5, 5.4, 5.3, 5.2, 5.1, 5.0, 4.0, 3.0, 2.0 };
 
             Version = 1.0;
 
             foreach (var version in versions)
             {
                 var signature = Encoding.ASCII.GetBytes($"[SCR-PARAMS]v0{version:F1}");
-                var sss = Encoding.ASCII.GetString(signature);
+                var filesignature = reader.ReadBytes(signature.Length);
+                var signaturetext = Encoding.ASCII.GetString(signature);
+                var filesignaturetext = Encoding.ASCII.GetString(filesignature);
 
                 if (signature.Length != 17)
                 {
@@ -55,7 +57,7 @@ namespace Params_Tool
 
                 reader.BaseStream.Position = 0;
 
-                throw new Exception("##" + sss + "##" + signature.Length + "##" + reader.ReadBytes(signature.Length) + "##" + reader.ReadBytes(signature.Length).SequenceEqual(signature));
+                throw new Exception("##" + version + "##" + signaturetext + "##" + filesignaturetext + "##" + reader.ReadBytes(signature.Length).SequenceEqual(signature));
 
                 if (reader.ReadBytes(signature.Length).SequenceEqual(signature))
                 {
