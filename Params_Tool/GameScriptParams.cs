@@ -54,7 +54,7 @@ namespace Params_Tool
 
                 reader.BaseStream.Position = 0;
 
-                throw new Exception("Bad version number." + signature + "##" + reader.ReadBytes(signature.Length).SequenceEqual(signature));
+                throw new Exception("##" + signature.Length + "##" + reader.ReadBytes(signature.Length) + "##" + reader.ReadBytes(signature.Length).SequenceEqual(signature));
 
                 if (reader.ReadBytes(signature.Length).SequenceEqual(signature))
                 {
