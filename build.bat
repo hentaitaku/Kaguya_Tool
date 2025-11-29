@@ -12,7 +12,7 @@ mkdir Build
 mkdir Build\Params_Tool
 
 dotnet restore Params_Tool/Params_Tool.csproj /p:RuntimeIdentifiers=win
-msbuild Params_Tool/Params_Tool.csproj /p:LangVersion=9 /p:AllowUnsafeBlocks=true /p:Platform=AnyCPU /p:Configuration=Release /p:OutputPath=..\Build\Params_Tool\
+msbuild Params_Tool/Params_Tool.csproj /p:LangVersion=10 /p:AllowUnsafeBlocks=true /p:Platform=AnyCPU /p:Configuration=Release /p:OutputPath=..\Build\Params_Tool\
 del Build\Params_Tool\FreeMote*.xml
 del Build\Params_Tool\*.pdb
 del Build\Params_Tool\*.txt
