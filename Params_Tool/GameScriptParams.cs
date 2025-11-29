@@ -7,6 +7,8 @@ using System.Text;
 #pragma warning disable IDE0060
 #pragma warning disable IDE0063
 
+CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+
 namespace Params_Tool
 {
     public class GameScriptParams
@@ -45,11 +47,6 @@ namespace Params_Tool
 
             foreach (var version in versions)
             {
-                if (version.Contains(","))
-                {
-                    version = version.ToString().Replace(",", ".");
-                }
-                
                 var signature = Encoding.ASCII.GetBytes($"[SCR-PARAMS]v0{version:F1}");
                 var filesignature = reader.ReadBytes(signature.Length);
                 var signaturetext = Encoding.ASCII.GetString(signature);
