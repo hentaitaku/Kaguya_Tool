@@ -46,6 +46,7 @@ namespace Params_Tool
             foreach (var version in versions)
             {
                 var signature = Encoding.ASCII.GetBytes($"[SCR-PARAMS]v0{version:F1}");
+                var sss = Encoding.ASCII.GetString(signature);
 
                 if (signature.Length != 17)
                 {
@@ -54,7 +55,7 @@ namespace Params_Tool
 
                 reader.BaseStream.Position = 0;
 
-                throw new Exception("##" + signature.Length + "##" + reader.ReadBytes(signature.Length) + "##" + reader.ReadBytes(signature.Length).SequenceEqual(signature));
+                throw new Exception("##" + sss + "##" + signature.Length + "##" + reader.ReadBytes(signature.Length) + "##" + reader.ReadBytes(signature.Length).SequenceEqual(signature));
 
                 if (reader.ReadBytes(signature.Length).SequenceEqual(signature))
                 {
